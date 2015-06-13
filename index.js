@@ -35,8 +35,7 @@ StrongChild.prototype._onReq = function (message, callback) {
 
   this.filePath = message.__file;
   this.returnPath =  message.__return || path.join(os.tmpdir(), uuid.v4());
-
-  if (Object.keys(message) > 1) {
+  if (Object.keys(message).length > 1) {
     delete message.__file;
     this.stream.emit('request', message);
   }
