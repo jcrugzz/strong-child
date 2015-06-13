@@ -13,7 +13,7 @@ npm i strong-child
 
 ## Usage
 
-See [`strong-parent`] for the parent process usage. Below is how you would
+See [`strong-parent`][strong-parent] for the parent process usage. Below is how you would
 create a child process.
 
 ```js
