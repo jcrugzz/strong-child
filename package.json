@@ -1,6 +1,6 @@
 {
   "name": "strong-child",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A child process who accepts a data stream from strong-parent (who spawns me) and exposes a duplex stream to process data and send it back to the parent via the fs",
   "main": "index.js",
   "scripts": {
