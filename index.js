@@ -1,4 +1,5 @@
 
+var os = require('os');
 var fs = require('fs');
 var once = require('one-time');
 var path = require('path');
@@ -10,21 +11,30 @@ module.exports = StrongChild;
 
 function StrongChild() {
   if (!(this instanceof StrongChild)) return new StrongChild();
+
   this.stream = duplexify();
   this.fork = new Forkee()
     .on('request', this._onReq.bind(this));
+
+  //
+  // Add a log message to the stream that proxies a log event to the parent
+  //
+  this.stream.log = this.log.bind(this);
 
   return this.stream;
 
 }
 
-StrongChild.prototype._onReq = function (message, callback) {
+StrongChild.prototype.log = function (obj) {
+  this.fork.notify('log', obj);
+};
 
+StrongChild.prototype._onReq = function (message, callback) {
   this.callback = once(callback);
   this.stream.on('error', this.callback);
 
   this.filePath = message.__file;
-  this.returnPath = this.return || message.__return || path.join(os.tmpdir(), uuid.v4());
+  this.returnPath =  message.__return || path.join(os.tmpdir(), uuid.v4());
 
   if (Object.keys(message) > 1) {
     delete message.__file;
