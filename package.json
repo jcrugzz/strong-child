@@ -1,0 +1,34 @@
+{
+  "name": "strong-child",
+  "version": "0.0.1",
+  "description": "A child process who accepts a data stream from strong-parent (who spawns me) and exposes a duplex stream to process data and send it back to the parent via the fs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jcrugzz/strong-child.git"
+  },
+  "keywords": [
+    "child",
+    "parent",
+    "data",
+    "processing",
+    "fs",
+    "streaming",
+    "duplex"
+  ],
+  "author": "Jarrett Cruger <jcrugzz@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jcrugzz/strong-child/issues"
+  },
+  "homepage": "https://github.com/jcrugzz/strong-child",
+  "dependencies": {
+    "duplexify": "^3.4.1",
+    "forkee": "^1.0.0",
+    "one-time": "0.0.4",
+    "uuid": "^2.0.1"
+  }
+}
